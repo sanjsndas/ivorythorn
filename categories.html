@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categories · Ivorythorn Leafhaven Circle</title>
+  <!-- Premium typography: serif + sans with character -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,300;7..72,400;7..72,500;7..72,600;7..72,700&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    /* ---- reset & base (mirror homepage) ---- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fbf7f0;
+      color: #2b2a26;
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.6;
+    }
+
+    .brand-identity { display: none; }
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ---- navigation: floating horizon bar (exactly as homepage) ---- */
+    .nav-horizon {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0 0.8rem;
+      border-bottom: 1px solid rgba(44, 42, 38, 0.08);
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Literata', serif;
+      font-weight: 500;
+      font-size: 1.8rem;
+      letter-spacing: -0.02em;
+      color: #1d3b2f;
+    }
+
+    .logo-icon {
+      display: inline-block;
+      width: 2.2rem;
+      height: 2.2rem;
+      background: #d9c9b0;
+      border-radius: 70% 30% 60% 40% / 40% 50% 50% 60%;
+      box-shadow: inset -2px -2px 0 #b7a48b, 0 4px 8px rgba(0,0,0,0.02);
+      transform: rotate(6deg);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.4rem;
+      font-weight: 450;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      color: #3f3d37;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: inherit;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+      padding-bottom: 0.2rem;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #7b8f7a;
+    }
+
+    .nav-cta {
+      background: #1d3b2f;
+      color: #f2ede4;
+      padding: 0.5rem 1.6rem;
+      border-radius: 60px 20px 60px 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      border: none;
+      cursor: default;
+    }
+
+    /* ---- categories page specific: garden chronicle style ---- */
+    .categories-header {
+      margin: 3.2rem 0 2.4rem;
+      padding: 2.8rem 2.8rem 2.2rem;
+      background: #f3efe6;
+      border-radius: 120px 20px 120px 20px;
+      box-shadow: 0 12px 28px -8px rgba(30, 40, 30, 0.08);
+    }
+
+    .categories-header h1 {
+      font-family: 'Literata', serif;
+      font-size: 3.2rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: #1d3b2f;
+      line-height: 1.1;
+    }
+
+    .categories-header h1 small {
+      display: block;
+      font-size: 1.2rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      color: #5f5b51;
+      margin-top: 0.6rem;
+      border-left: 4px solid #b7a48b;
+      padding-left: 1.4rem;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2.2rem;
+      margin: 3rem 0 4rem;
+    }
+
+    .category-card {
+      background: #fcf9f4;
+      border: 1px solid #e8e0d3;
+      border-radius: 80px 8px 80px 8px;
+      padding: 2rem 1.8rem 2rem;
+      transition: transform 0.15s ease, box-shadow 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .category-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 28px -12px rgba(40, 50, 30, 0.10);
+      border-color: #c7bcab;
+    }
+
+    .category-card .icon {
+      font-size: 2.4rem;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .category-card h3 {
+      font-family: 'Literata', serif;
+      font-weight: 500;
+      font-size: 1.6rem;
+      color: #1d3b2f;
+      border-left: 4px solid #7b8f7a;
+      padding-left: 0.8rem;
+      margin: 0.5rem 0 0.4rem;
+    }
+
+    .category-card p {
+      font-size: 0.95rem;
+      color: #4b4840;
+      margin: 0.4rem 0 1rem;
+      flex: 1;
+    }
+
+    .category-card .meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #7b786e;
+      border-top: 1px dashed #ded9cd;
+      padding-top: 0.8rem;
+      margin-top: 0.4rem;
+      align-items: center;
+    }
+
+    .pill-tag {
+      background: #d9c9b0;
+      padding: 0.1rem 1rem;
+      border-radius: 60px 12px 60px 12px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #1d3b2f;
+      letter-spacing: 0.04em;
+      display: inline-block;
+      margin-right: 0.3rem;
+    }
+
+    .pill-tag.light {
+      background: #ede8dd;
+      color: #3f3d37;
+    }
+
+    .featured-carousel {
+      background: #f3efe6;
+      padding: 2.4rem 2.8rem;
+      border-radius: 120px 8px 120px 8px;
+      margin: 2.8rem 0 1.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #ddd6c8;
+    }
+
+    .featured-carousel .featured-text {
+      font-family: 'Literata', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: #1d3b2f;
+    }
+
+    .featured-carousel .featured-tags {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .divider-leaf {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.6rem 0 0.8rem;
+      color: #b7a48b;
+      font-size: 0.9rem;
+    }
+    .divider-leaf span {
+      background: #ddd6c8;
+      height: 1px;
+      width: 40px;
+    }
+
+    /* ---- footer woven (exact match) ---- */
+    .footer-woven {
+      margin-top: 5rem;
+      padding: 3.2rem 0 2rem;
+      border-top: 1px solid #d9d0bf;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+      background: #f3efe6;
+      border-radius: 120px 20px 0 0;
+      padding: 3.2rem 2.8rem 2.8rem;
+    }
+
+    .footer-woven h5 {
+      font-family: 'Literata', serif;
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      color: #1d3b2f;
+    }
+
+    .footer-woven a {
+      display: block;
+      color: #4b4840;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.2rem 0;
+      border-bottom: 1px dotted transparent;
+    }
+
+    .footer-woven a:hover {
+      border-bottom-color: #7b8f7a;
+    }
+
+    .footer-copy {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #7b786e;
+      padding-top: 1.5rem;
+      border-top: 1px solid #d3cbbc;
+      margin-top: 0.8rem;
+    }
+
+    /* ---- responsive (mirror) ---- */
+    @media (max-width: 820px) {
+      .category-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .categories-header {
+        border-radius: 60px 20px 60px 20px;
+        padding: 2rem;
+      }
+      .categories-header h1 {
+        font-size: 2.6rem;
+      }
+      .footer-woven {
+        grid-template-columns: 1fr 1fr;
+        border-radius: 60px 12px 0 0;
+        padding: 2rem 1.5rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        padding: 0 1rem;
+      }
+      .nav-horizon {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+      .categories-header h1 {
+        font-size: 2rem;
+      }
+      .featured-carousel {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- navigation horizon (exactly as homepage) -->
+  <nav class="nav-horizon">
+    <div class="logo">
+      <span class="logo-icon"></span>
+      Ivorythorn · Leafhaven
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms Of Privacy</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="cookies.html">Cookies Policy</a>
+      <a href="categories.html">CATEGORIES</a>
+      <a href="disclamier.html">DISCLAMIER</a>
+    </div>
+  </nav>
+
+  <!-- categories header: garden chronicle style -->
+  <section class="categories-header">
+    <h1>
+      Categories
+      <small>Wander through the groves — every path leads to a deeper understanding</small>
+    </h1>
+  </section>
+
+  <!-- featured / quick topics -->
+  <div class="featured-carousel">
+    <span class="featured-text">🌿 this season's growing topics</span>
+    <div class="featured-tags">
+      <span class="pill-tag">permaculture</span>
+      <span class="pill-tag light">seed saving</span>
+      <span class="pill-tag">soil health</span>
+      <span class="pill-tag light">herbalism</span>
+      <span class="pill-tag">microclimates</span>
+    </div>
+  </div>
+
+  <!-- category grid -->
+  <div class="category-grid">
+    <!-- card 1 -->
+    <div class="category-card">
+      <div class="icon">🌱</div>
+      <h3>Soil & Earth</h3>
+      <p>Living soil, compost, fungi networks, and the quiet alchemy beneath our feet. Articles on building fertility and understanding ground.</p>
+      <div class="meta">
+        <span>12 articles</span>
+        <span>⬡ 4 new</span>
+      </div>
+    </div>
+    <!-- card 2 -->
+    <div class="category-card">
+      <div class="icon">🌿</div>
+      <h3>Herbarium</h3>
+      <p>Medicinal and culinary herbs, wild foraging, drying practices, and the folklore of plants. A green lexicon for the curious.</p>
+      <div class="meta">
+        <span>18 articles</span>
+        <span>⬡ 6 new</span>
+      </div>
+    </div>
+    <!-- card 3 -->
+    <div class="category-card">
+      <div class="icon">🌳</div>
+      <h3>Orchard & Grove</h3>
+      <p>Fruit trees, nut trees, grafting, pruning, and companion planting. The long game of growing perennials.</p>
+      <div class="meta">
+        <span>9 articles</span>
+        <span>⬡ 2 new</span>
+      </div>
+    </div>
+    <!-- card 4 -->
+    <div class="category-card">
+      <div class="icon">🌸</div>
+      <h3>Flower & Pollinator</h3>
+      <p>Native blooms, pollinator corridors, bee habitats, and the art of the wild garden. Beauty that sustains.</p>
+      <div class="meta">
+        <span>14 articles</span>
+        <span>⬡ 5 new</span>
+      </div>
+    </div>
+    <!-- card 5 -->
+    <div class="category-card">
+      <div class="icon">🧑‍🌾</div>
+      <h3>Garden Craft</h3>
+      <p>Tools, techniques, seasonal rhythms, and practical wisdom from generations of caretakers.</p>
+      <div class="meta">
+        <span>21 articles</span>
+        <span>⬡ 3 new</span>
+      </div>
+    </div>
+    <!-- card 6 -->
+    <div class="category-card">
+      <div class="icon">📜</div>
+      <h3>Chronicle & Lore</h3>
+      <p>Stories, essays, historical perspectives, and the cultural roots of gardening. What we carry from the past.</p>
+      <div class="meta">
+        <span>8 articles</span>
+        <span>⬡ 1 new</span>
+      </div>
+    </div>
+    <!-- card 7 -->
+    <div class="category-card">
+      <div class="icon">🌾</div>
+      <h3>Seed Library</h3>
+      <p>Open-pollinated varieties, seed saving, exchanges, and the preservation of agricultural heritage.</p>
+      <div class="meta">
+        <span>16 articles</span>
+        <span>⬡ 7 new</span>
+      </div>
+    </div>
+    <!-- card 8 -->
+    <div class="category-card">
+      <div class="icon">🌎</div>
+      <h3>Ecology & Climate</h3>
+      <p>Regenerative practices, climate resilience, water conservation, and the larger web of life.</p>
+      <div class="meta">
+        <span>11 articles</span>
+        <span>⬡ 4 new</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- divider / quote (optional) -->
+  <div class="divider-leaf">
+    <span></span>  ✦  every category holds a key  ✦  <span></span>
+  </div>
+
+  <!-- sub‑category / quick reference (inline with the theme) -->
+  <div style="display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; background: #faf7f0; padding: 1.2rem 1.8rem; border-radius: 80px 8px 80px 8px; margin: 1.6rem 0 2.8rem; border: 1px solid #e3dbcd;">
+    <span style="font-weight: 500; color: #1d3b2f;">⟡ sub‑topics:</span>
+    <span class="pill-tag" style="background:#ede8dd;">composting</span>
+    <span class="pill-tag" style="background:#ede8dd;">raised beds</span>
+    <span class="pill-tag" style="background:#ede8dd;">permaculture design</span>
+    <span class="pill-tag" style="background:#ede8dd;">native plants</span>
+    <span class="pill-tag" style="background:#ede8dd;">food forests</span>
+    <span class="pill-tag" style="background:#ede8dd;">botanical dyes</span>
+    <span class="pill-tag" style="background:#ede8dd;">wild edibles</span>
+  </div>
+
+  <!-- FOOTER woven (exact match) -->
+  <footer class="footer-woven">
+    <div>
+      <h5>Ivorythorn · Leafhaven</h5>
+      <p style="font-size:0.9rem; color:#5f5b51; max-width:260px;">A quiet journal for the deep gardener. Founded in the shade of old oaks.</p>
+    </div>
+    <div>
+      <h5>Explore</h5>
+      <a href="#">Journal</a>
+      <a href="#">Specimens</a>
+      <a href="#">Chronicle</a>
+      <a href="#">Archive</a>
+    </div>
+    <div>
+      <h5>Learn</h5>
+      <a href="#">Resources</a>
+      <a href="#">FAQ</a>
+      <a href="#">Authors</a>
+      <a href="#">Editorial policy</a>
+    </div>
+    <div>
+      <h5>Legal</h5>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+      <a href="#">Disclaimer</a>
+    </div>
+    <div class="footer-copy">
+      © 2026 Leafhaven Circle · crafted with soil & silence
+    </div>
+  </footer>
+</div>
+<!-- all pages linked in nav/footer as per spec: home, about, contact, terms, privacy, cookies, categories, disclaimer -->
+</body>
+</html>

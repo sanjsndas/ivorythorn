@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About · Ivorythorn Leafhaven Circle</title>
+  <!-- Premium typography: serif + sans with character -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,300;7..72,400;7..72,500;7..72,600;7..72,700&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    /* ---- reset & base (mirror homepage) ---- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fbf7f0;
+      color: #2b2a26;
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.6;
+    }
+
+    .brand-identity { display: none; }
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ---- navigation: floating horizon bar (exactly as homepage) ---- */
+    .nav-horizon {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0 0.8rem;
+      border-bottom: 1px solid rgba(44, 42, 38, 0.08);
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Literata', serif;
+      font-weight: 500;
+      font-size: 1.8rem;
+      letter-spacing: -0.02em;
+      color: #1d3b2f;
+    }
+
+    .logo-icon {
+      display: inline-block;
+      width: 2.2rem;
+      height: 2.2rem;
+      background: #d9c9b0;
+      border-radius: 70% 30% 60% 40% / 40% 50% 50% 60%;
+      box-shadow: inset -2px -2px 0 #b7a48b, 0 4px 8px rgba(0,0,0,0.02);
+      transform: rotate(6deg);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.4rem;
+      font-weight: 450;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      color: #3f3d37;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: inherit;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+      padding-bottom: 0.2rem;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #7b8f7a;
+    }
+
+    .nav-cta {
+      background: #1d3b2f;
+      color: #f2ede4;
+      padding: 0.5rem 1.6rem;
+      border-radius: 60px 20px 60px 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      border: none;
+      cursor: default;
+    }
+
+    /* ---- about page specific: garden chronicle style ---- */
+    .about-header {
+      margin: 3.2rem 0 2.4rem;
+      padding: 2.8rem 2.8rem 2.2rem;
+      background: #f3efe6;
+      border-radius: 120px 20px 120px 20px;
+      box-shadow: 0 12px 28px -8px rgba(30, 40, 30, 0.08);
+    }
+
+    .about-header h1 {
+      font-family: 'Literata', serif;
+      font-size: 3.2rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: #1d3b2f;
+      line-height: 1.1;
+    }
+
+    .about-header h1 small {
+      display: block;
+      font-size: 1.2rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      color: #5f5b51;
+      margin-top: 0.6rem;
+      border-left: 4px solid #b7a48b;
+      padding-left: 1.4rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 2.4rem;
+      margin: 2.8rem 0 4rem;
+    }
+
+    .about-main {
+      background: #fcf9f4;
+      padding: 2.4rem 2.4rem 2.8rem;
+      border-radius: 80px 8px 80px 8px;
+      border: 1px solid #e8e0d3;
+    }
+
+    .about-main h2 {
+      font-family: 'Literata', serif;
+      font-weight: 500;
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      color: #1d3b2f;
+      border-left: 6px solid #7b8f7a;
+      padding-left: 1rem;
+    }
+
+    .about-main h3 {
+      font-family: 'Literata', serif;
+      font-weight: 500;
+      font-size: 1.4rem;
+      margin: 2rem 0 0.6rem;
+      color: #2b2a26;
+    }
+
+    .about-main p {
+      margin: 1rem 0;
+      color: #3a3a33;
+    }
+
+    .about-main ul, .about-main ol {
+      margin: 0.8rem 0 1.2rem 1.8rem;
+    }
+
+    .about-main li {
+      margin-bottom: 0.4rem;
+    }
+
+    .about-side {
+      background: #f1efe7;
+      padding: 2rem 2rem 2.4rem;
+      border-radius: 8px 80px 8px 80px;
+      border: 1px solid #ddd6c8;
+      align-self: start;
+    }
+
+    .about-side h4 {
+      font-family: 'Literata', serif;
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: #1d3b2f;
+      border-bottom: 1px dashed #c7bcab;
+      padding-bottom: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-side .bio-item {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 1.6rem;
+      align-items: center;
+    }
+
+    .bio-item .avatar {
+      width: 3.6rem;
+      height: 3.6rem;
+      background: #d9c9b0;
+      border-radius: 60% 40% 50% 50% / 40% 50% 60% 50%;
+      flex-shrink: 0;
+      background-image: radial-gradient(circle at 30% 30%, #c7b8a0, #b7a48b);
+      box-shadow: inset -2px -2px 0 #a08d76;
+    }
+
+    .bio-item .bio-text {
+      font-size: 0.95rem;
+    }
+    .bio-item .bio-text strong {
+      display: block;
+      font-weight: 600;
+      color: #1d3b2f;
+    }
+
+    .pill-tag {
+      background: #d9c9b0;
+      padding: 0.1rem 1rem;
+      border-radius: 60px 12px 60px 12px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #1d3b2f;
+      letter-spacing: 0.04em;
+      display: inline-block;
+      margin-right: 0.3rem;
+    }
+
+    .quote-block {
+      background: #fcf9f4;
+      padding: 1.6rem 2rem;
+      border-radius: 60px 12px 60px 12px;
+      margin: 2rem 0;
+      border-left: 4px solid #7b8f7a;
+      font-style: italic;
+      color: #3f3d37;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 2rem 0;
+      background: #ffffffc9;
+      border-radius: 40px 8px 40px 8px;
+      padding: 0.8rem 0.2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    th {
+      text-align: left;
+      padding: 0.8rem 1rem;
+      background: #1d3b2f;
+      color: #f2ede4;
+      font-weight: 500;
+    }
+
+    td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid #ded9cd;
+    }
+
+    .infographic-placeholder {
+      background: #e8e0d3;
+      padding: 2.4rem 1.6rem;
+      text-align: center;
+      border-radius: 120px 8px 120px 8px;
+      margin: 2rem 0;
+      color: #3f3d37;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      border: 1px dashed #7b8f7a;
+      background-image: radial-gradient(circle at 20% 30%, #d9c9b0 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    /* ---- footer woven (exact match) ---- */
+    .footer-woven {
+      margin-top: 5rem;
+      padding: 3.2rem 0 2rem;
+      border-top: 1px solid #d9d0bf;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+      background: #f3efe6;
+      border-radius: 120px 20px 0 0;
+      padding: 3.2rem 2.8rem 2.8rem;
+    }
+
+    .footer-woven h5 {
+      font-family: 'Literata', serif;
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      color: #1d3b2f;
+    }
+
+    .footer-woven a {
+      display: block;
+      color: #4b4840;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.2rem 0;
+      border-bottom: 1px dotted transparent;
+    }
+
+    .footer-woven a:hover {
+      border-bottom-color: #7b8f7a;
+    }
+
+    .footer-copy {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #7b786e;
+      padding-top: 1.5rem;
+      border-top: 1px solid #d3cbbc;
+      margin-top: 0.8rem;
+    }
+
+    /* ---- responsive (mirror) ---- */
+    @media (max-width: 820px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-header {
+        border-radius: 60px 20px 60px 20px;
+        padding: 2rem;
+      }
+      .about-header h1 {
+        font-size: 2.6rem;
+      }
+      .footer-woven {
+        grid-template-columns: 1fr 1fr;
+        border-radius: 60px 12px 0 0;
+        padding: 2rem 1.5rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1rem;
+      }
+      .nav-horizon {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+      .about-header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- navigation horizon (exactly as homepage) -->
+  <nav class="nav-horizon">
+    <div class="logo">
+      <span class="logo-icon"></span>
+      Ivorythorn · Leafhaven
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms Of Privacy</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="cookies.html">Cookies Policy</a>
+      <a href="categories.html">CATEGORIES</a>
+      <a href="disclamier.html">DISCLAMIER</a>
+    </div>
+  </nav>
+
+  <!-- about header: garden chronicle style -->
+  <section class="about-header">
+    <h1>
+      About the Circle
+      <small>Rooted in observation, woven by hand — the Leafhaven story</small>
+    </h1>
+  </section>
+
+  <!-- about grid: main + side -->
+  <div class="about-grid">
+    <div class="about-main">
+      <h2>⟡ A quiet journal for the deep gardener</h2>
+      <p><strong>Ivorythorn · Leafhaven</strong> began as a field notebook under an old oak, and grew into a living archive of soil, silence, and reciprocal care. We are a small collective of gardeners, writers, and ecologists who believe that gardening is not a hobby but a conversation — with the land, with the seasons, with the unseen mycelial networks that hold the world together.</p>
+      
+      <h3>Our roots</h3>
+      <p>Founded in 2020, the Leafhaven Circle emerged from a shared frustration with conventional gardening advice: too much product, too little patience. We started documenting our experiments in polyculture, no-till methods, and heirloom preservation. What began as a private log became a public journal — and eventually, this website.</p>
+      <p>Today, we host workshops, maintain a seed library, and publish field notes that blend science, folklore, and practical wisdom. Our contributors include botanists, permaculture designers, and poets who garden by moonlight.</p>
+
+      <div class="quote-block">
+        “The garden is not a plot of land; it is a plot of time. We are merely its stewards for a season.”
+        <br>— <strong>H. Marlow, founding editor</strong>
+      </div>
+
+      <h3>What we believe</h3>
+      <ul>
+        <li><strong>Biodiversity over uniformity:</strong> every garden is a refuge for species, great and small.</li>
+        <li><strong>Soil first:</strong> healthy soil grows healthy plants, communities, and minds.</li>
+        <li><strong>Slow knowledge:</strong> the best insights come from years, not hours, of observation.</li>
+        <li><strong>Open source:</strong> we share our findings freely, because the earth belongs to no one.</li>
+      </ul>
+
+      <h3>Our work in numbers (2024–2026)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Activity</th><th>Reach / impact</th></tr></thead>
+          <tbody>
+            <tr><td>Field notes published</td><td>72</td></tr>
+            <tr><td>Workshops hosted</td><td>34</td></tr>
+            <tr><td>Heirloom varieties preserved</td><td>118</td></tr>
+            <tr><td>Community garden plots</td><td>12</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Meet the guild</h3>
+      <p>Our core team changes with the seasons, but a few of us have been here since the first seed was sown.</p>
+      <ul>
+        <li><strong>H. Marlow</strong> – Editor & soil ecologist. Author of <em>Companion Planting Unveiled</em>.</li>
+        <li><strong>R. Cinder</strong> – Photographer & herbalist. Captures the light between leaves.</li>
+        <li><strong>M. Sallow</strong> – Botanist & seed guardian. Keeps the ancient varieties alive.</li>
+        <li><strong>L. Thornwood</strong> – Permaculture designer. Builds guilds and food forests.</li>
+      </ul>
+
+      <!-- infographic placeholder (max 4 images) -->
+      <div class="infographic-placeholder">
+        <span style="display:block; font-size:2rem; margin-bottom:0.2rem;">⬡</span>
+        <strong>Infographic · Leafhaven timeline</strong><br>
+        <span style="font-size:0.85rem;">(visual: from a single notebook to a global community of deep gardeners)</span>
+      </div>
+
+      <h3>Frequently asked questions</h3>
+      <div style="background: #fcf9f4; padding: 1.6rem 2rem; border-radius: 60px 12px 60px 12px; margin: 1.6rem 0;">
+        <details style="margin:0.6rem 0; border-bottom:1px solid #e3dbcd; padding-bottom:0.6rem;">
+          <summary style="font-weight:600; cursor:pointer; color:#1d3b2f;">Is the Circle open to new members?</summary>
+          <p style="margin-top:0.4rem; color:#3f3d37;">Yes. We welcome gardeners of all levels. Join our monthly field calls or contribute to the seed library.</p>
+        </details>
+        <details style="margin:0.6rem 0; border-bottom:1px solid #e3dbcd; padding-bottom:0.6rem;">
+          <summary style="font-weight:600; cursor:pointer; color:#1d3b2f;">Do you offer online courses?</summary>
+          <p style="margin-top:0.4rem; color:#3f3d37;">We host seasonal webinars and a self-paced rhizome method course. Check our journal for updates.</p>
+        </details>
+        <details style="margin:0.6rem 0; padding-bottom:0.6rem;">
+          <summary style="font-weight:600; cursor:pointer; color:#1d3b2f;">How can I support the Circle?</summary>
+          <p style="margin-top:0.4rem; color:#3f3d37;">Share our work, plant a guild, or donate seeds to our exchange. Every action roots us deeper.</p>
+        </details>
+      </div>
+
+      <p style="margin-top:2rem; font-size:0.95rem; border-top:1px solid #d9d0bf; padding-top:1.2rem; color:#5f5b51;">— Leafhaven Circle, established 2020 · cultivated with curiosity and care.</p>
+    </div>
+
+    <!-- side bar: about the editors, quick links -->
+    <div class="about-side">
+      <h4>⟡ Circle voices</h4>
+      <div class="bio-item">
+        <div class="avatar"></div>
+        <div class="bio-text"><strong>H. Marlow</strong> Editor · soil whisperer</div>
+      </div>
+      <div class="bio-item">
+        <div class="avatar"></div>
+        <div class="bio-text"><strong>R. Cinder</strong> Lens & leaf lore</div>
+      </div>
+      <div class="bio-item">
+        <div class="avatar"></div>
+        <div class="bio-text"><strong>M. Sallow</strong> Seed guardian</div>
+      </div>
+      <div class="bio-item">
+        <div class="avatar"></div>
+        <div class="bio-text"><strong>L. Thornwood</strong> Guild architect</div>
+      </div>
+
+      <hr style="border:0; border-top:1px dashed #c7bcab; margin:1.6rem 0;">
+
+      <h4>⟡ Quick links</h4>
+      <ul style="list-style:none; padding:0;">
+        <li style="margin-bottom:0.4rem;"><a href="#" style="color:#2b2a26; text-decoration:none; border-bottom:1px dotted transparent;">→ Journal</a></li>
+        <li style="margin-bottom:0.4rem;"><a href="#" style="color:#2b2a26; text-decoration:none; border-bottom:1px dotted transparent;">→ Seed library</a></li>
+        <li style="margin-bottom:0.4rem;"><a href="#" style="color:#2b2a26; text-decoration:none; border-bottom:1px dotted transparent;">→ Workshops</a></li>
+        <li style="margin-bottom:0.4rem;"><a href="#" style="color:#2b2a26; text-decoration:none; border-bottom:1px dotted transparent;">→ Editorial policy</a></li>
+      </ul>
+
+      <div style="margin-top:1.6rem; background:#fcf9f4; padding:0.8rem 1.2rem; border-radius:40px 8px 40px 8px;">
+        <span class="pill-tag">#biodiversity</span>
+        <span class="pill-tag">#no-till</span>
+        <span class="pill-tag">#heirloom</span>
+        <span class="pill-tag" style="margin-top:0.3rem; display:inline-block;">#slow gardening</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER woven (exact match) -->
+  <footer class="footer-woven">
+    <div>
+      <h5>Ivorythorn · Leafhaven</h5>
+      <p style="font-size:0.9rem; color:#5f5b51; max-width:260px;">A quiet journal for the deep gardener. Founded in the shade of old oaks.</p>
+    </div>
+    <div>
+      <h5>Explore</h5>
+      <a href="#">Journal</a>
+      <a href="#">Specimens</a>
+      <a href="#">Chronicle</a>
+      <a href="#">Archive</a>
+    </div>
+    <div>
+      <h5>Learn</h5>
+      <a href="#">Resources</a>
+      <a href="#">FAQ</a>
+      <a href="#">Authors</a>
+      <a href="#">Editorial policy</a>
+    </div>
+    <div>
+      <h5>Legal</h5>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+      <a href="#">Disclaimer</a>
+    </div>
+    <div class="footer-copy">
+      © 2026 Leafhaven Circle · crafted with soil & silence
+    </div>
+  </footer>
+</div>
+
+<!-- all pages linked in nav/footer as per spec: home, about, contact, terms, privacy, cookies, categories, disclaimer -->
+</body>
+</html>
